@@ -193,7 +193,7 @@ module DNSBL # :nodoc:
 					@dnsbls.each do |dnsblname, config|
 						next unless data.is_a? Resolv::DNS::Resource::IN::A
 						if domain == config['domain']
-							meaning = config[data.address.to_s] || data.address.to_s
+							meaning = config[data.address.to_s]
 							results << DNSBLResult.new(dnsblname, ip, name.to_s, data.address.to_s, meaning, Time.now.to_f - @starttime)
 							break
 						end
